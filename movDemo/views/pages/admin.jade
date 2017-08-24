@@ -3,19 +3,19 @@ block content
     .container
         .row
             form.form-horizontal(action="/admin/movie/new",method="post")
-                input(type="hidden", name="movie[_id]", value="#{movie._id}")
+                input(type="hidden", name="_id", value="#{movie._id}")
                 .form-group
                     label.col-sm-3.control-label(for="inputTitle") 电影名字
                     .col-sm-10
-                        input#inputTitle.form-control(type="text", name="movie[title]", value="#{movie.title}")
+                        input#inputTitle.form-control(type="text", name="title", value="#{movie.title}")
                 .form-group
                     label.col-sm-3.control-label(for="inputTitle") 导演
                     .col-sm-10
-                        input#inputTitle.form-control(type="text", name="movie[doctor]", value="#{movie.doctor}")
+                        input#inputTitle.form-control(type="text", name="doctor", value="#{movie.doctor}")
                 .form-group
                     label.col-sm-3.control-label(for="inputTitle") 国家
                     .col-sm-10
-                        input#inputTitle.form-control(type="text", name="movie[country]", value="#{movie.country}")
+                        input#inputTitle.form-control(type="text", name="country", value="#{movie.country}")
                 .form-group
                     .col-sm-offset-2.col-sm-10
                     button.btn.btn-default(type="submit") 录入
