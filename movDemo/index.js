@@ -39,14 +39,38 @@ app.get('/',function(req,res){
 // signup
 app.post('/user/signup', function(req, res){
     var _user = req.body
-    console.log(_user)
-    var user = new User(_user)
+    //console.log(_user)
     
-    user.save(function(err, user){
+    User.find({name: _user.name}, function(err, user) {
         if (err) {
             console.log(err)
         }
-        console.log(user)
+        if (user.length>0) {
+            //console.log(user)
+            return res.redirect('/')
+        }
+        else {
+            var user = new User(_user)
+            user.save(function(err, user){
+                if (err) {
+                    console.log(err)
+                }
+                res.redirect('/admin/userlist')
+            })
+        }
+    })
+    
+})
+// userlist
+app.get('/admin/userlist',function(req,res){
+    User.fetch(function(err, users){
+        if(err) {
+            console.log(err)
+        }
+        res.render('userlist', {
+            title: '用户列表',
+            movies: users
+        })
     })
 })
 
